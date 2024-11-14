@@ -64,7 +64,7 @@ namespace ExamenCasa
             double discount = total * 0.80; // 20% de descuento
             o.ApplyPromotion(promotion1);
         }
-    );
+          );
 
             orden.ApplyPromotion(promotion1);
             orden.Print();
@@ -83,17 +83,22 @@ namespace ExamenCasa
             var musicAlbum = new ProductDigital("Music Album", 120);
             var licenseSoftware = new ProductDigital("Software License", 150);
 
-            inventory.AddProduct(libro, 1);
-            inventory.AddProduct(musicAlbum, 1);
-            inventory.AddProduct(licenseSoftware, 1);
+            inventory.AddProduct(libro,4 );
+            inventory.AddProduct(musicAlbum, 4);
+            inventory.AddProduct(licenseSoftware, 4);
 
 
             IOrder order = new Orden();
 
-            order.AddProduct(libro, 2);
-            //añadrir promocion que sea 2x1 en libros digitales
-            var promocion = new PromocionAutomatic("2x1 en libros digitales", item => item.GetTotal() > libro.Precio, item => item.AddProduct(libro, -1));
-        
+            order.AddProduct(libro, 3);
+            order.AddProduct(musicAlbum, 1);
+
+            //hacer que cada que se compren 2 libros se regale un libro digital
+            IPromocion promotion = new PromocionAutomatic("2x1 libro digital", o => o.GetTotal() > 50, o => o.AddProduct(libro, -1));
+
+            order.ApplyPromotion(promotion);
+
+            order.Print();
 
 
         }

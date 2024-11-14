@@ -35,6 +35,11 @@ namespace ExamenCasa.Clases
                 }
             }
         }
+
+        public List<(IProduct product,int cantidad)> GetOrden()
+        {
+            return _items;
+        }
      
 
         public double GetTotal()
