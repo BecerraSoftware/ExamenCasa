@@ -7,10 +7,10 @@ using ExamenCasa.Interfaces;
 
 namespace ExamenCasa.Clases
 {
-    public abstract class Producto: IProduct
+    public abstract class Producto 
     {
-        private int _id;
-        public  int Id { get { return _id; } set { _id = value; } }
+        private static int _id=0;
+        public static int Id { get { return _id; } set { _id = value == _id ? _id++ : value; } }
         private string _nombre;
 
         public string Nombre
