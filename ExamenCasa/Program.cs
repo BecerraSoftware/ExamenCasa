@@ -75,7 +75,8 @@ namespace ExamenCasa
 
         static void Main(string[] args)
         {
-            var inventory = new Inventory();
+            IInventory inventory = new Inventory();
+
 
             // Agregar productos
             var libro = new ProductDigital("libro digital", 50);
@@ -87,12 +88,12 @@ namespace ExamenCasa
             inventory.AddProduct(licenseSoftware, 1);
 
 
-            var buscarPorId = inventory.FilterProducts(p => p.Id == 1);
-            foreach (var product in buscarPorId)
-            {
-                Console.WriteLine(product.Nombre);
-            }
+            IOrder order = new Orden();
 
+            order.AddProduct(libro, 2);
+            //añadrir promocion que sea 2x1 en libros digitales
+            var promocion = new PromocionAutomatic("2x1 en libros digitales", item => item.GetTotal() > libro.Precio, item => item.AddProduct(libro, -1));
+        
 
 
         }

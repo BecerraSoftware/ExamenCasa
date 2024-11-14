@@ -8,6 +8,7 @@ namespace ExamenCasa.Interfaces
 {
     internal interface IProduct
     {
+        int Id { get; set; }
         string Nombre { get; set; }
         double Precio { get; set; }
     }

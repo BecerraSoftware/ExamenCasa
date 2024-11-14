@@ -13,7 +13,7 @@ namespace ExamenCasa.Clases
 
         public ProductDigital(string name, double price):base(name,price)
         {
-            Nombre = name;
+            Nombre= name;
             Precio = price;
         }
     }

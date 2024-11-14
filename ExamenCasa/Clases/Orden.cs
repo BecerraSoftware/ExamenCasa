@@ -9,7 +9,7 @@ namespace ExamenCasa.Clases
 {
     internal class Orden : IOrder
     {
-        private readonly List<(IProduct, int)> _items = new List<(IProduct, int)>();
+        private readonly List<(IProduct producto, int cantidad)> _items = new List<(IProduct, int)>();
         private readonly List<string> _promotions = new List<string>();
     public void AddProduct(IProduct product, int cantidad = 0)
         {
@@ -35,10 +35,11 @@ namespace ExamenCasa.Clases
                 }
             }
         }
+     
 
         public double GetTotal()
         {
-            return _items.Sum(x => x.Item1.Precio * x.Item2);
+            return _items.Sum(x => x.producto.Precio * x.cantidad);
         }
 
         public void Print()
@@ -54,5 +55,7 @@ namespace ExamenCasa.Clases
 
             Console.WriteLine($"Total: {GetTotal()}");
         }
+
+        
     }
 }

@@ -7,10 +7,12 @@ using ExamenCasa.Interfaces;
 
 namespace ExamenCasa.Clases
 {
-    public abstract class Producto 
+    public abstract class Producto: IProduct
     {
-        private static int _id=0;
-        public static int Id { get { return _id; } set { _id = value == _id ? _id++ : value; } }
+        //hacer que tengan un id unico
+        private static int _id = 0;
+        public int Id { get; set; } = _id++;
+
         private string _nombre;
 
         public string Nombre
@@ -36,6 +38,7 @@ namespace ExamenCasa.Clases
         }
         public Producto(string nombre, double precio)
         {
+            
             Nombre = nombre;
             Precio = precio;
         }
